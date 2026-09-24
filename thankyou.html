@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e2136e">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/bkash-logo.png">
+
+<title>bKash Payment | Administrative Fee</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(226, 19, 110, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #f8f9fc,
+      #f1f3f7
+    );
+
+  color: #252525;
+  padding: 30px 15px;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 4px 15px rgba(226, 19, 110, 0.05);
+
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  position: relative;
+
+  text-align: center;
+
+  padding: 32px 20px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e2136d70,
+      #c80f624d
+    );
+
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+
+.header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  top: -90px;
+  right: -60px;
+}
+
+
+.header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  bottom: -70px;
+  left: -40px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrapper {
+  position: relative;
+
+  z-index: 2;
+
+  width: 150px;
+  height: auto;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+}
+
+
+.header img {
+  display: block;
+
+  width: 150px;
+  max-width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  background: transparent;
+}
+
+
+/* =========================
+   HEADER TEXT
+========================= */
+
+.header h1 {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.4px;
+
+  color: #222;
+}
+
+
+.header p {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 7px;
+
+  font-size: 14px;
+
+  opacity: 0.9;
+
+  color: #222;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  padding: 28px;
+}
+
+
+/* =========================
+   AMOUNT
+========================= */
+
+.amount-box {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f6,
+      #fff7fa
+    );
+
+  border: 1px solid
+    rgba(226, 19, 110, 0.12);
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+
+.amount-label {
+  display: block;
+
+  color: #777;
+
+  font-size: 13px;
+
+  margin-bottom: 4px;
+}
+
+
+.amount {
+  color: #e2136e;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+
+/* =========================
+   BKASH NUMBER SECTION
+========================= */
+
+.payment-number-box {
+  background: #fff0f6;
+
+  border: 1px solid
+    rgba(226, 19, 110, 0.14);
+
+  border-radius: 16px;
+
+  padding: 16px;
+
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+
+.payment-number-label {
+  display: block;
+
+  font-size: 13px;
+
+  color: #777;
+
+  margin-bottom: 8px;
+}
+
+
+.payment-number-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+.payment-number {
+  font-size: 20px;
+
+  font-weight: 800;
+
+  color: #e2136e;
+
+  letter-spacing: 0.3px;
+}
+
+
+.copy-btn {
+  width: auto;
+
+  min-height: 36px;
+
+  margin: 0;
+
+  padding: 7px 13px;
+
+  border: 1px solid #e2136e;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #e2136e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+  transition: all 0.2s ease;
+}
+
+
+.copy-btn:hover {
+  transform: none;
+
+  background: #e2136e;
+
+  color: #ffffff;
+
+  box-shadow: none;
+}
+
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   INSTRUCTIONS
+========================= */
+
+.instructions {
+  background: #fafafa;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 16px;
+
+  padding: 18px 18px 18px 20px;
+
+  margin-bottom: 28px;
+}
+
+
+.instructions-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  margin-bottom: 12px;
+}
+
+
+.instructions-title span {
+  width: 25px;
+  height: 25px;
+
+  background: #e2136e;
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+
+  flex-shrink: 0;
+}
+
+
+.instructions ol {
+  padding-left: 20px;
+}
+
+
+.instructions li {
+  padding-left: 5px;
+
+  margin-bottom: 9px;
+
+  color: #555;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+.instructions li:last-child {
+  margin-bottom: 0;
+}
+
+
+.instructions b {
+  color: #222;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-title {
+  font-size: 18px;
+
+  font-weight: 750;
+
+  margin-bottom: 18px;
+}
+
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+
+label {
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  margin-bottom: 7px;
+
+  color: #333;
+}
+
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+
+  min-height: 48px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dedede;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  color: #333;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #e2136e;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(226, 19, 110, 0.08);
+}
+
+
+input[type="file"] {
+  padding: 10px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+button {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e2136e,
+      #c80f61
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px
+    rgba(226, 19, 110, 0.22);
+
+  transition: all 0.2s ease;
+}
+
+
+button:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(226, 19, 110, 0.28);
+}
+
+
+button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-note {
+  text-align: center;
+
+  margin-top: 18px;
+
+  font-size: 11px;
+
+  color: #999;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   SUCCESS SCREEN
+========================= */
+
+.success-screen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  display: none;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 25px;
+}
+
+
+.success-card {
+  max-width: 480px;
+
+  width: 100%;
+
+  padding: 45px 25px;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader {
+  width: 52px;
+  height: 52px;
+
+  border: 4px solid #f5d6e4;
+
+  border-top-color: #e2136e;
+
+  border-radius: 50%;
+
+  animation:
+    spin 0.8s linear infinite;
+
+  margin: 0 auto;
+}
+
+
+.loading-text {
+  margin-top: 18px;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================
+   SUCCESS CHECK
+========================= */
+
+.check-circle {
+  width: 105px;
+  height: 105px;
+
+  margin: 0 auto 22px;
+
+  border-radius: 50%;
+
+  background: #eafaf1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  animation:
+    pop 0.4s ease;
+}
+
+
+.checkmark {
+  width: 65px;
+  height: 65px;
+
+  stroke: #2ecc71;
+
+  stroke-width: 4;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  fill: none;
+
+  stroke-dasharray: 100;
+
+  stroke-dashoffset: 100;
+
+  animation:
+    draw 0.7s 0.2s forwards;
+}
+
+
+@keyframes draw {
+
+  to {
+    stroke-dashoffset: 0;
+  }
+
+}
+
+
+@keyframes pop {
+
+  0% {
+    transform: scale(0.7);
+
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+}
+
+
+.success-title {
+  font-size: 23px;
+
+  font-weight: 750;
+
+  color: #222;
+
+  margin-bottom: 12px;
+}
+
+
+.success-text {
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: #666;
+
+  max-width: 400px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  body {
+    padding: 12px;
+  }
+
+
+  .container {
+    border-radius: 20px;
+  }
+
+
+  .header {
+    padding: 28px 18px 25px;
+  }
+
+
+  .logo-wrapper {
+    width: 135px;
+  }
+
+
+  .header img {
+    width: 135px;
+  }
+
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+
+  .content {
+    padding: 21px 18px;
+  }
+
+
+  .amount {
+    font-size: 27px;
+  }
+
+
+  .payment-number {
+    font-size: 18px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MAIN PAYMENT CARD
+========================= -->
+
+<div
+  class="container"
+  id="mainContent"
+>
+
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="logo-wrapper">
+
+      <img
+        src="assets/bkash-logo.png"
+        alt="bKash Logo"
+      >
+
+    </div>
+
+
+    <h1>
+      Administrative Fee
+    </h1>
+
+
+    <p>
+      Complete your payment securely
+    </p>
+
+  </div>
+
+
+
+  <!-- CONTENT -->
+
+  <div class="content">
+
+
+    <!-- AMOUNT -->
+
+    <div class="amount-box">
+
+      <span class="amount-label">
+        Amount to Pay
+      </span>
+
+      <div class="amount">
+        ৳ 200
+      </div>
+
+    </div>
+
+
+
+    <!-- BKASH NUMBER -->
+
+    <div class="payment-number-box">
+
+      <span class="payment-number-label">
+        bKash Send Money/Cash In Number
+      </span>
+
+
+      <div class="payment-number-row">
+
+        <span
+          class="payment-number"
+          id="bkashPaymentNumber"
+        >
+        01961398298
+        </span>
+
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyBkashNumber()"
+        >
+          Copy Number
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PAYMENT INSTRUCTIONS -->
+
+    <div class="instructions">
+
+      <div class="instructions-title">
+
+        <span>
+          i
+        </span>
+
+        Payment Instructions
+
+      </div>
+
+
+      <ol>
+
+        <li>
+          Open your <b>bKash</b> app.
+        </li>
+
+
+        <li>
+          Select <b>Send Money</b>.
+        </li>
+
+
+        <li>
+          Enter the bKash number shown above.
+        </li>
+
+
+        <li>
+          Enter amount:
+          <b>200 BDT</b>.
+        </li>
+
+
+        <li>
+          Complete the payment and copy your
+          <b>Transaction ID</b>.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+
+    <!-- PAYMENT FORM -->
+
+    <div class="form-title">
+      Payment Verification
+    </div>
+
+
+    <form id="paymentForm">
+
+
+      <!-- bKash Number -->
+
+      <div class="form-group">
+
+        <label for="bkashNumber">
+          Your bKash Number
+        </label>
+
+
+        <input
+          type="text"
+          id="bkashNumber"
+          placeholder="01XXXXXXXXX"
+          inputmode="numeric"
+          required
+        >
+
+      </div>
+
+
+
+      <!-- Transaction ID -->
+
+      <div class="form-group">
+
+        <label for="transactionId">
+          Transaction ID <span style="font-weight: 400; color: #777;">(Optional)</span>
+        </label>
+
+
+        <input
+          type="text"
+          id="transactionId"
+          placeholder="Enter your transaction ID (optional)"
+        >
+
+      </div>
+
+
+
+      <!-- Payment Proof -->
+
+      <div class="form-group">
+
+        <label for="paymentProof">
+          Upload Payment Proof
+        </label>
+
+
+        <input
+          type="file"
+          id="paymentProof"
+          accept="image/*"
+          required
+        >
+
+      </div>
+
+
+
+      <!-- Submit -->
+
+      <button type="submit">
+        Submit Payment
+      </button>
+
+
+    </form>
+
+
+
+    <div class="footer-note">
+      Your payment information will be reviewed for verification.
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS SCREEN
+========================= -->
+
+<div
+  class="success-screen"
+  id="successScreen"
+>
+
+  <div class="success-card">
+
+
+    <!-- LOADING -->
+
+    <div id="loadingContent">
+
+      <div class="loader"></div>
+
+
+      <div class="loading-text">
+        Processing your payment information...
+      </div>
+
+    </div>
+
+
+
+    <!-- SUCCESS -->
+
+    <div
+      id="successContent"
+      style="display:none;"
+    >
+
+      <div class="check-circle">
+
+        <svg
+          class="checkmark"
+          viewBox="0 0 52 52"
+        >
+
+          <path
+            d="M14 27 L22 35 L38 18"
+          ></path>
+
+        </svg>
+
+      </div>
+
+
+      <div class="success-title">
+        Payment Submitted
+      </div>
+
+
+      <div class="success-text">
+
+        We are confirming your payment.
+
+        <br><br>
+
+        Once your submission is verified,
+        our team will review your details and send your confirmed schedule along with access links for the online interview.
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const form =
+  document.getElementById(
+    "paymentForm"
+  );
+
+
+const successScreen =
+  document.getElementById(
+    "successScreen"
+  );
+
+
+const loadingContent =
+  document.getElementById(
+    "loadingContent"
+  );
+
+
+const successContent =
+  document.getElementById(
+    "successContent"
+  );
+
+
+
+/* =========================
+   COPY BKASH NUMBER
+========================= */
+
+function copyBkashNumber() {
+
+  const number =
+    document
+      .getElementById(
+        "bkashPaymentNumber"
+      )
+      .textContent
+      .trim();
+
+
+  const button =
+    document.querySelector(
+      ".copy-btn"
+    );
+
+
+  navigator.clipboard
+    .writeText(number)
+    .then(function() {
+
+      button.textContent =
+        "Copied!";
+
+
+      setTimeout(
+        function() {
+
+          button.textContent =
+            "Copy Number";
+
+        },
+        1500
+      );
+
+    })
+    .catch(function() {
+
+      /* Fallback for older browsers */
+
+      const tempInput =
+        document.createElement(
+          "input"
+        );
+
+
+      tempInput.value =
+        number;
+
+
+      document.body.appendChild(
+        tempInput
+      );
+
+
+      tempInput.select();
+
+
+      document.execCommand(
+        "copy"
+      );
+
+
+      document.body.removeChild(
+        tempInput
+      );
+
+
+      button.textContent =
+        "Copied!";
+
+
+      setTimeout(
+        function() {
+
+          button.textContent =
+            "Copy Number";
+
+        },
+        1500
+      );
+
+    });
+
+}
+
+
+
+/* =========================
+   PAYMENT FORM
+========================= */
+
+form.addEventListener(
+  "submit",
+  function(e) {
+
+    e.preventDefault();
+
+
+    /* Show fullscreen screen */
+
+    successScreen.style.display =
+      "flex";
+
+
+    /* Show loading */
+
+    loadingContent.style.display =
+      "block";
+
+
+    successContent.style.display =
+      "none";
+
+
+    /* Simulated processing */
+
+    setTimeout(
+      function() {
+
+        loadingContent.style.display =
+          "none";
+
+
+        successContent.style.display =
+          "block";
+
+      },
+      2000
+    );
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>

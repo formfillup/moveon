@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers — Aliexpress</title>
+<meta name="description" content="Explore open positions and apply online." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Homepage">
+      <img src="assets/logo.png" alt="Company logo" width="1536" height="405" />
+    </a>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#jobs" class="btn btn-primary btn-sm" data-scroll>View jobs</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav-toggle-bars"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#top">Home</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#jobs" class="btn btn-primary btn-block" data-scroll>View jobs</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Now hiring — remote</p>
+        <h1>Work on a schedule you choose, supporting real customers.</h1>
+        <p class="hero-sub">
+          Remote roles open to freshers and experienced applicants alike.
+          Pick the 8-hour shift that fits your day, apply in a few minutes,
+          and get started.
+        </p>
+        <div class="hero-ctas">
+          <a href="#jobs" class="btn btn-primary btn-lg" data-scroll>View open positions</a>
+          <a href="#about" class="btn btn-ghost btn-lg" data-scroll>How it works</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="shift-card">
+          <p class="shift-card-label">Choose your shift</p>
+          <div class="shift-ring">
+            <svg viewBox="0 0 200 200" class="shift-ring-svg">
+              <circle cx="100" cy="100" r="82" class="ring-track" />
+              <circle cx="100" cy="100" r="82" class="ring-progress" />
+              <text x="100" y="95" class="ring-text-main">8h</text>
+              <text x="100" y="118" class="ring-text-sub">of 24h</text>
+            </svg>
+          </div>
+          <ul class="shift-legend">
+            <li><span class="dot dot-active"></span> Your selected shift</li>
+            <li><span class="dot"></span> Rest of the day</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / WHY STRIP ============ -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-item">
+        <h3>No experience needed</h3>
+        <p>Freshers are welcome to apply — no previous experience is required.</p>
+      </div>
+      <div class="about-item">
+        <h3>Flexible shifts</h3>
+        <p>Choose your preferred 8-hour shift within a 24-hour window.</p>
+      </div>
+      <div class="about-item">
+        <h3>Fully remote</h3>
+        <p>Work from anywhere in Bangladesh with a stable connection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOB LISTINGS ============ -->
+  <section class="jobs" id="jobs">
+    <div class="jobs-inner">
+      <div class="section-head">
+        <h2>Open positions</h2>
+        <p>Every listing below is currently accepting applications.</p>
+      </div>
+
+      <div class="job-grid" id="job-grid">
+        <!-- Job cards are rendered here by script.js from the jobs data array -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT STRIP ============ -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <h2>This page is only for shortlisted candidates.</h2>
+      <p>Please complete the next step of your application.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="assets/logo.png" alt="Company logo" class="footer-logo" width="1536" height="405" />
+    <p class="footer-copy">&copy; <span id="year"></span> All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ JOB DETAILS DRAWER ============ -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="job-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+  <button class="drawer-close" id="drawer-close" aria-label="Close job details">&times;</button>
+  <div class="drawer-content" id="drawer-content">
+    <!-- Populated by script.js -->
+  </div>
+</aside>
+
+<!-- ============ APPLICATION FORM MODAL ============ -->
+<div class="modal-overlay" id="modal-overlay"></div>
+<div class="modal" id="apply-modal" role="dialog" aria-modal="true" aria-labelledby="apply-title">
+  <button class="modal-close" id="modal-close" aria-label="Close application form">&times;</button>
+
+  <div class="modal-body">
+    <h2 id="apply-title">Apply now</h2>
+    <p class="modal-sub">Fields marked * are required.</p>
+
+    <form id="apply-form" novalidate>
+      <div class="field">
+        <label for="f-name">Full name *</label>
+        <input type="text" id="f-name" name="fullName" autocomplete="name" required />
+        <span class="error-msg" data-error-for="f-name"></span>
+      </div>
+
+      <div class="field">
+        <label for="f-email">Email address *</label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required />
+        <span class="error-msg" data-error-for="f-email"></span>
+      </div>
+
+      <div class="field">
+        <label for="f-phone">Phone number *</label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel" required />
+        <span class="error-msg" data-error-for="f-phone"></span>
+      </div>
+
+      <div class="field">
+        <label for="f-location">Location / city *</label>
+        <input type="text" id="f-location" name="location" autocomplete="address-level2" required />
+        <span class="error-msg" data-error-for="f-location"></span>
+      </div>
+
+      <div class="field">
+        <label for="f-position">Position applying for</label>
+        <input type="text" id="f-position" name="position" readonly />
+      </div>
+
+      <div class="field" id="shift-field" hidden>
+        <label for="f-shift">Preferred shift *</label>
+        <select id="f-shift" name="shiftPreference">
+          <option value="" disabled selected>Select an 8-hour shift</option>
+        </select>
+        <span class="error-msg" data-error-for="f-shift"></span>
+      </div>
+
+      <div class="field">
+        <label for="f-cover">Cover note <span class="optional">(optional)</span></label>
+        <textarea id="f-cover" name="coverNote" rows="4"></textarea>
+      </div>
+
+      <div class="field">
+        <label id="cv-label">CV / resume *</label>
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-labelledby="cv-label" aria-describedby="cv-note">
+          <input type="file" id="f-cv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden />
+          <div class="dropzone-empty" id="dropzone-empty">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4v11m0-11 4 4m-4-4-4 4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p><strong>Upload your CV</strong></p>
+            <p class="dropzone-hint">Drag and drop, or click to browse</p>
+          </div>
+          <div class="dropzone-file" id="dropzone-file" hidden>
+            <span class="file-icon" aria-hidden="true">&#128196;</span>
+            <span class="file-name" id="file-name"></span>
+            <button type="button" class="file-remove" id="file-remove" aria-label="Remove file">Remove</button>
+          </div>
+        </div>
+        <p class="field-note" id="cv-note">PDF, DOC or DOCX — max 5MB</p>
+        <span class="error-msg" data-error-for="f-cv"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn">
+        <span id="submit-btn-text">Submit application</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js?v=3"></script>
+</body>
+</html>
