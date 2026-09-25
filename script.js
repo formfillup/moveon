@@ -58,7 +58,7 @@
   var currentStep = 1;
 
   var stepperLabels = [
-    'Personal', 'Professional', 'Work Type', 'Schedule', 'CV Upload', 'Additional', 'Review'
+    'Personal', 'Professional', 'Work Type', 'Schedule', 'CV Upload', 'Review'
   ];
 
   var stepperEl = document.getElementById('stepper');
