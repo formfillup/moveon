@@ -634,8 +634,13 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   .hamburger { display: flex; }
 
   .job-card { grid-template-columns: 1fr; }
-  .job-card-actions { min-width: 0; flex-direction: row; }
-  .job-card-actions .btn { flex: 1; }
+  .job-card-actions { min-width: 0; flex-direction: column; }
+  .job-card-actions .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    padding: 14px 16px;
+  }
 
   .field-grid, .employed-extra, .worktype-grid { grid-template-columns: 1fr; }
   .form-card { padding: 24px 18px; }
