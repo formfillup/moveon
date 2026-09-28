@@ -248,61 +248,6 @@ body {
 
 
 /* =========================
-   QR SECTION
-========================= */
-
-.qr-section {
-  text-align: center;
-
-  margin-bottom: 25px;
-}
-
-
-.qr-title {
-  font-size: 15px;
-
-  font-weight: 700;
-
-  margin-bottom: 12px;
-}
-
-
-.qr-box {
-  display: inline-flex;
-
-  padding: 14px;
-
-  background: #ffffff;
-
-  border: 1px solid #eeeeee;
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.06);
-}
-
-
-.qr-box img {
-  width: 180px;
-  height: 180px;
-
-  object-fit: contain;
-
-  border-radius: 8px;
-}
-
-
-.qr-note {
-  margin-top: 12px;
-
-  font-size: 13px;
-
-  color: #777;
-}
-
-
-/* =========================
    BKASH NUMBER SECTION
 ========================= */
 
@@ -844,12 +789,6 @@ button:active {
   }
 
 
-  .qr-box img {
-    width: 165px;
-    height: 165px;
-  }
-
-
   .amount {
     font-size: 27px;
   }
@@ -927,39 +866,12 @@ button:active {
 
 
 
-    <!-- QR PAYMENT -->
-
-    <div class="qr-section">
-
-      <div class="qr-title">
-        Scan the QR code to pay
-      </div>
-
-
-      <div class="qr-box">
-
-        <img
-          src="assets/OR.jpeg"
-          alt="bKash Payment QR Code"
-        >
-
-      </div>
-
-
-      <div class="qr-note">
-        Pay using your bKash app
-      </div>
-
-    </div>
-
-
-
     <!-- BKASH NUMBER -->
 
     <div class="payment-number-box">
 
       <span class="payment-number-label">
-        bKash Send Money / Cash In Number
+        bKash Send Money/Cash In Number
       </span>
 
 
@@ -969,7 +881,7 @@ button:active {
           class="payment-number"
           id="bkashPaymentNumber"
         >
-          01961398298
+        01307640063
         </span>
 
 
@@ -1005,12 +917,12 @@ button:active {
       <ol>
 
         <li>
-          Open your <b>bKash app</b> or visit an agent.
+          Open your <b>bKash</b> app.
         </li>
 
 
         <li>
-          Select <b>Send Money</b> or <b>Cash In</b>.
+          Select <b>Send Money</b>.
         </li>
 
 
@@ -1091,7 +1003,7 @@ button:active {
       <div class="form-group">
 
         <label for="paymentProof">
-          Upload Payment Proof <span style="font-weight: 400; color: #777;">(Optional)</span>
+          Upload Payment Proof
         </label>
 
 
@@ -1099,6 +1011,7 @@ button:active {
           type="file"
           id="paymentProof"
           accept="image/*"
+          required
         >
 
       </div>
