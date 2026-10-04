@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e2136e">
+
+<!-- Favicon -->
+<link rel="icon" id="favicon" type="image/png" href="assets/bkash-logo.png">
+
+<title>bKash Payment | Administrative Fee</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      var(--theme-glow, rgba(226, 19, 110, 0.08)),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #f8f9fc,
+      #f1f3f7
+    );
+  color: #252525;
+  padding: 30px 15px;
+  transition: background 0.4s ease;
+}
+
+/* =========================
+   DYNAMIC THEME VARIABLES
+========================= */
+
+:root {
+  --primary-color: #e2136e;
+  --secondary-color: #c80f61;
+  --bg-subtle: #fff0f6;
+  --bg-gradient: linear-gradient(135deg, #fff0f6, #fff7fa);
+  --header-gradient: linear-gradient(145deg, #e2136d70, #c80f624d);
+  --theme-glow: rgba(226, 19, 110, 0.08);
+  --btn-gradient: linear-gradient(135deg, #e2136e, #c80f61);
+  --shadow-color: rgba(226, 19, 110, 0.22);
+  --shadow-hover: rgba(226, 19, 110, 0.28);
+}
+
+body.nagad-theme {
+  --primary-color: #f21a24;
+  --secondary-color: #f37021;
+  --bg-subtle: #fff2f2;
+  --bg-gradient: linear-gradient(135deg, #fff2f2, #fff8f5);
+  --header-gradient: linear-gradient(145deg, rgba(242, 26, 36, 0.7), rgba(243, 112, 33, 0.5));
+  --theme-glow: rgba(242, 26, 36, 0.08);
+  --btn-gradient: linear-gradient(135deg, #f21a24, #f37021);
+  --shadow-color: rgba(242, 26, 36, 0.22);
+  --shadow-hover: rgba(242, 26, 36, 0.28);
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  position: relative;
+  text-align: center;
+  padding: 32px 20px 30px;
+  background: var(--header-gradient);
+  color: #ffffff;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  top: -90px;
+  right: -60px;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  bottom: -70px;
+  left: -40px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 55px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.header img {
+  display: block;
+  max-width: 160px;
+  max-height: 55px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body.nagad-theme .header img {
+  filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.6));
+}
+
+/* =========================
+   HEADER TEXT
+========================= */
+
+.header h1 {
+  position: relative;
+  z-index: 2;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #222;
+}
+
+.header p {
+  position: relative;
+  z-index: 2;
+  margin-top: 7px;
+  font-size: 14px;
+  opacity: 0.9;
+  color: #222;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  padding: 28px;
+}
+
+/* =========================
+   MODERN METHOD SELECTOR
+========================= */
+
+.selector-container {
+  margin-bottom: 22px;
+}
+
+.selector-label {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.method-selector {
+  display: flex;
+  background: #f1f3f7;
+  padding: 5px;
+  border-radius: 16px;
+  gap: 6px;
+}
+
+.method-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  margin-top: 0;
+  min-height: 48px;
+}
+
+.method-btn img {
+  height: 24px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.method-btn.active {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.method-btn:not(.active):hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================
+   DYNAMIC SMOOTH FADE PANELS
+========================= */
+
+.fade-section {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-section.switching {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* =========================
+   AMOUNT
+========================= */
+
+.amount-box {
+  background: var(--bg-gradient);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 25px;
+  transition: background 0.4s ease;
+}
+
+.amount-label {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.amount {
+  color: var(--primary-color);
+  font-size: 30px;
+  font-weight: 800;
+  transition: color 0.4s ease;
+}
+
+/* =========================
+   PAYMENT NUMBER SECTION
+========================= */
+
+.payment-number-box {
+  background: var(--bg-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 25px;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+.payment-number-label {
+  display: block;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.payment-number-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.payment-number {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 0.3px;
+  transition: color 0.4s ease;
+}
+
+.copy-btn {
+  width: auto;
+  min-height: 36px;
+  margin: 0;
+  padding: 7px 13px;
+  border: 1px solid var(--primary-color);
+  border-radius: 9px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  transform: none;
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   INSTRUCTIONS
+========================= */
+
+.instructions {
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  padding: 18px 18px 18px 20px;
+  margin-bottom: 28px;
+}
+
+.instructions-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.instructions-title span {
+  width: 25px;
+  height: 25px;
+  background: var(--primary-color);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  transition: background 0.4s ease;
+}
+
+.instructions ol {
+  padding-left: 20px;
+}
+
+.instructions li {
+  padding-left: 5px;
+  margin-bottom: 9px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.instructions li:last-child {
+  margin-bottom: 0;
+}
+
+.instructions b {
+  color: #222;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-title {
+  font-size: 18px;
+  font-weight: 750;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 650;
+  margin-bottom: 7px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--theme-glow);
+}
+
+input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit-btn {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 13px;
+  background: var(--btn-gradient);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px var(--shadow-hover);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-note {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 11px;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* =========================
+   SUCCESS SCREEN
+========================= */
+
+.success-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.98);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+
+.success-card {
+  max-width: 480px;
+  width: 100%;
+  padding: 45px 25px;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader {
+  width: 52px;
+  height: 52px;
+  border: 4px solid #f5d6e4;
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+.loading-text {
+  margin-top: 18px;
+  color: #666;
+  font-size: 14px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   SUCCESS CHECK
+========================= */
+
+.check-circle {
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: #eafaf1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pop 0.4s ease;
+}
+
+.checkmark {
+  width: 65px;
+  height: 65px;
+  stroke: #2ecc71;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 0.7s 0.2s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-title {
+  font-size: 23px;
+  font-weight: 750;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.success-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+  body {
+    padding: 12px;
+  }
+  .container {
+    border-radius: 20px;
+  }
+  .header {
+    padding: 28px 18px 25px;
+  }
+  .header img {
+    max-width: 135px;
+  }
+  .header h1 {
+    font-size: 22px;
+  }
+  .content {
+    padding: 21px 18px;
+  }
+  .amount {
+    font-size: 27px;
+  }
+  .payment-number {
+    font-size: 18px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     MAIN PAYMENT CARD
+========================= -->
+
+<div class="container" id="mainContent">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrapper">
+      <img id="headerLogo" src="assets/bkash-logo.png" alt="bKash Logo">
+    </div>
+    <h1>Administrative Fee</h1>
+    <p>Complete your payment securely</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SELECTOR BEFORE AMOUNT -->
+    <div class="selector-container">
+      <span class="selector-label">Select Payment Method</span>
+      <div class="method-selector">
+        <button type="button" class="method-btn active" id="btnBkash" onclick="switchMethod('bkash')">
+          <img src="assets/bkash-logo.png" alt="bKash">
+        </button>
+        <button type="button" class="method-btn" id="btnNagad" onclick="switchMethod('nagad')">
+          <img src="assets/Nagad-logo.png" alt="Nagad">
+        </button>
+      </div>
+    </div>
+
+    <!-- AMOUNT BOX -->
+    <div class="amount-box">
+      <span class="amount-label">Amount to Pay</span>
+      <div class="amount">৳ 300</div>
+    </div>
+
+    <!-- DYNAMIC FADE WRAPPER FOR METHOD-SPECIFIC CONTENT -->
+    <div class="fade-section" id="dynamicContent">
+
+      <!-- PAYMENT NUMBER -->
+      <div class="payment-number-box">
+        <span class="payment-number-label" id="numberLabel">bKash Send Money/Cash In Number</span>
+        <div class="payment-number-row">
+          <span class="payment-number" id="paymentNumber">01307640063</span>
+          <button type="button" class="copy-btn" id="copyBtn" onclick="copyPaymentNumber()">Copy Number</button>
+        </div>
+      </div>
+
+      <!-- PAYMENT INSTRUCTIONS -->
+      <div class="instructions">
+        <div class="instructions-title">
+          <span>i</span> Payment Instructions
+        </div>
+        <ol>
+          <li>Open your <b id="instructAppName">bKash</b> app.</li>
+          <li>Select <b>Send Money</b>.</li>
+          <li>Enter the <span id="instructNumberType">bKash</span> number shown above.</li>
+          <li>Enter amount: <b>300 BDT</b>.</li>
+          <li>Complete the payment and copy your <b>Transaction ID</b>.</li>
+        </ol>
+      </div>
+
+      <!-- PAYMENT FORM -->
+      <div class="form-title">Payment Verification</div>
+
+      <form id="paymentForm">
+        <!-- Phone Number Field -->
+        <div class="form-group">
+          <label for="userPhoneNumber" id="phoneLabel">Your bKash Number</label>
+          <input type="text" id="userPhoneNumber" placeholder="01XXXXXXXXX" inputmode="numeric" required>
+        </div>
+
+        <!-- Transaction ID Field -->
+        <div class="form-group">
+          <label for="transactionId">Transaction ID <span style="font-weight: 400; color: #777;">(Optional)</span></label>
+          <input type="text" id="transactionId" placeholder="Enter your transaction ID (optional)">
+        </div>
+
+        <!-- Payment Proof Field -->
+        <div class="form-group">
+          <label for="paymentProof">Upload Payment Proof</label>
+          <input type="file" id="paymentProof" accept="image/*" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit Payment</button>
+      </form>
+
+    </div>
+
+    <div class="footer-note">
+      Your payment information will be reviewed for verification.
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     SUCCESS SCREEN
+========================= -->
+
+<div class="success-screen" id="successScreen">
+  <div class="success-card">
+
+    <!-- LOADING -->
+    <div id="loadingContent">
+      <div class="loader"></div>
+      <div class="loading-text">Processing your payment information...</div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="successContent" style="display:none;">
+      <div class="check-circle">
+        <svg class="checkmark" viewBox="0 0 52 52">
+          <path d="M14 27 L22 35 L38 18"></path>
+        </svg>
+      </div>
+      <div class="success-title">Payment Submitted</div>
+      <div class="success-text">
+        We are confirming your payment.
+        <br><br>
+        Once your submission is verified, our team will review your details and send your confirmed schedule along with access links for the online interview.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* Method Configuration */
+const paymentConfig = {
+  bkash: {
+    number: "01307640063",
+    label: "bKash Send Money/Cash In Number",
+    appName: "bKash",
+    phoneLabel: "Your bKash Number",
+    logoSrc: "assets/bkash-logo.png",
+    pageTitle: "bKash Payment | Administrative Fee"
+  },
+  nagad: {
+    number: "01962143315",
+    label: "Nagad Send Money/Cash In Number",
+    appName: "Nagad",
+    phoneLabel: "Your Nagad Number",
+    logoSrc: "assets/Nagad-logo.png",
+    pageTitle: "Nagad Payment | Administrative Fee"
+  }
+};
+
+/* State Variable */
+let currentMethod = 'bkash';
+
+/* DOM Elements */
+const body = document.body;
+const headerLogo = document.getElementById("headerLogo");
+const favicon = document.getElementById("favicon");
+const btnBkash = document.getElementById("btnBkash");
+const btnNagad = document.getElementById("btnNagad");
+const dynamicContent = document.getElementById("dynamicContent");
+
+const numberLabel = document.getElementById("numberLabel");
+const paymentNumber = document.getElementById("paymentNumber");
+const instructAppName = document.getElementById("instructAppName");
+const instructNumberType = document.getElementById("instructNumberType");
+const phoneLabel = document.getElementById("phoneLabel");
+
+const form = document.getElementById("paymentForm");
+const successScreen = document.getElementById("successScreen");
+const loadingContent = document.getElementById("loadingContent");
+const successContent = document.getElementById("successContent");
+
+/* Method Switching Handler */
+function switchMethod(method) {
+  if (currentMethod === method) return;
+  currentMethod = method;
+
+  /* Update Button Active States */
+  if (method === 'bkash') {
+    btnBkash.classList.add('active');
+    btnNagad.classList.remove('active');
+  } else {
+    btnNagad.classList.add('active');
+    btnBkash.classList.remove('active');
+  }
+
+  /* Fade out content during transition */
+  dynamicContent.classList.add('switching');
+
+  setTimeout(() => {
+    const config = paymentConfig[method];
+
+    if (method === 'nagad') {
+      body.classList.add('nagad-theme');
+    } else {
+      body.classList.remove('nagad-theme');
+    }
+
+    /* Update dynamic text & assets */
+    headerLogo.src = config.logoSrc;
+    headerLogo.alt = config.appName + " Logo";
+    favicon.href = config.logoSrc;
+    document.title = config.pageTitle;
+
+    paymentNumber.textContent = config.number;
+    numberLabel.textContent = config.label;
+    instructAppName.textContent = config.appName;
+    instructNumberType.textContent = config.appName;
+    phoneLabel.textContent = config.phoneLabel;
+
+    /* Fade in content */
+    dynamicContent.classList.remove('switching');
+  }, 150);
+}
+
+/* Copy Functionality */
+function copyPaymentNumber() {
+  const number = paymentNumber.textContent.trim();
+  const button = document.getElementById("copyBtn");
+
+  navigator.clipboard.writeText(number)
+    .then(() => showCopied(button))
+    .catch(() => {
+      /* Fallback for older browsers */
+      const tempInput = document.createElement("input");
+      tempInput.value = number;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      showCopied(button);
+    });
+}
+
+function showCopied(button) {
+  button.textContent = "Copied!";
+  setTimeout(() => {
+    button.textContent = "Copy Number";
+  }, 1500);
+}
+
+/* Form Submission Handler */
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  successScreen.style.display = "flex";
+  loadingContent.style.display = "block";
+  successContent.style.display = "none";
+
+  setTimeout(() => {
+    loadingContent.style.display = "none";
+    successContent.style.display = "block";
+  }, 2000);
+});
+
+</script>
+
+</body>
+</html>
