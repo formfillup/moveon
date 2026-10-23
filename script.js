@@ -1,3 +1,4 @@
+
 (function () {
   "use strict";
 
@@ -235,15 +236,18 @@
         zone.classList.add('drag');
       });
     });
+
     ['dragleave', 'drop'].forEach(function (evt) {
       zone.addEventListener(evt, function (e) {
         e.preventDefault();
         zone.classList.remove('drag');
       });
     });
+
     zone.addEventListener('drop', function (e) {
       handleFiles(e.dataTransfer.files);
     });
+
     input.addEventListener('change', function () {
       handleFiles(input.files);
     });
@@ -251,6 +255,7 @@
     function handleFiles(fileList) {
       var files = Array.prototype.slice.call(fileList);
       var valid = [];
+
       files.forEach(function (f) {
         var okExt = !opts.accept || opts.accept.some(function (ext) {
           return f.name.toLowerCase().endsWith(ext);
@@ -258,6 +263,7 @@
         var okSize = f.size <= MAX_FILE_MB * 1024 * 1024;
         if (okExt && okSize) valid.push(f);
       });
+
       if (opts.single) {
         if (valid[0]) opts.onFiles([valid[0]]);
       } else {
@@ -272,10 +278,12 @@
           var chip = document.createElement('div');
           chip.className = 'file-chip';
           chip.innerHTML = '<span>📄 ' + f.name + '</span>';
+
           var removeBtn = document.createElement('button');
           removeBtn.type = 'button';
           removeBtn.textContent = '✕';
           removeBtn.addEventListener('click', function () { opts.onRemove(idx); });
+
           chip.appendChild(removeBtn);
           chipHolder.appendChild(chip);
         });
@@ -322,7 +330,7 @@
       ['Applicant Name', data.get('fullName') || '—'],
       ['Email', data.get('email') || '—'],
       ['Phone', data.get('phone') || '—'],
-      ['Position', 'Virtual Assistant'],
+      ['Position', 'Customer Support Executive'],
       ['Work Type', selectedWorkType ? selectedWorkType.type : '—'],
       ['Working Hours', selectedWorkType ? selectedWorkType.hours + ' hours/day' : '—'],
       ['Selected Schedule', hoursToLabel(scheduleState.start) + ' – ' + hoursToLabel(scheduleState.end)],
